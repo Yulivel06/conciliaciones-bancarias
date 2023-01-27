@@ -97,3 +97,11 @@ WHERE b.tarjeta = t.tarjeta
 ALTER TABLE clap
 ADD COLUMN id numeric;
 
+UPDATE CLAP AS c
+SET id = b.id
+FROM bansur AS b
+WHERE concat(c.inicio06_tarjeta, c.final4_tarjeta) = b.tarjeta
+    AND c.codigo_autorizacion = b.codigo_autorizacion
+    AND abs(c.monto) = abs(b.monto)
+    AND c.id_banco = b.id_adquiriente
+;
