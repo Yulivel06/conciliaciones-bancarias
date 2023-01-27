@@ -88,3 +88,10 @@ WHERE b.tarjeta = t.tarjeta
     ) AS r
      WHERE rn = 1 AND tipo_trx = 'PAGO'
 );
+
+/**
+  Partidas conciliables del cliente CLAP.
+  Para esto debemos asignarle un identificador que coincida con los datos en BANSUR
+ */
+
+ 
