@@ -94,4 +94,6 @@ WHERE b.tarjeta = t.tarjeta
   Para esto debemos asignarle un identificador que coincida con los datos en BANSUR
  */
 
- 
+ALTER TABLE clap
+ADD COLUMN id numeric;
+
