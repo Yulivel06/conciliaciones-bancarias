@@ -41,3 +41,27 @@ WITH transacciones AS (
 SELECT row_number() over (), *
 FROM transacciones
 ;
+
+- Agregamos una columna para asignar el identificador de la transacción (id)
+ALTER TABLE bansur
+ADD COLUMN id numeric;
+
+
+-- Seguidamente, establecemos el valor de los ids usando el criterio de unicidad antes expuesto
+WITH transacciones AS (
+    SELECT tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_adquiriente
+    FROM bansur
+    GROUP BY tarjeta, codigo_autorizacion, abs(monto), id_adquiriente
+    ORDER BY tarjeta
+),
+transacciones_con_id AS (
+    SELECT row_number() over () as id, *
+    FROM transacciones
+)
+UPDATE BANSUR AS b
+SET id = t.id
+FROM transacciones_con_id AS t
+WHERE b.tarjeta = t.tarjeta
+    AND b.codigo_autorizacion = t.codigo_autorizacion
+    AND abs(b.monto) = t.monto_abs
+    AND b.id_adquiriente = t.id_adquiriente;
