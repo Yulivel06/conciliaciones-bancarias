@@ -122,3 +122,21 @@ WHERE id is null
   ya que no cruzaron con las de banzur pero se puede identificar usando el criterio de unicidad antes mencionado, es
   decir, las columnas tarjeta, codigo de autorizacion, monto y banco, para asignar estos ids usamos la siguiente consulta
  */
+ WITH transacciones AS (
+    SELECT concat(inicio06_tarjeta, final4_tarjeta) AS tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_banco
+    FROM clap
+    GROUP BY tarjeta, codigo_autorizacion, abs(monto), id_banco
+    ORDER BY tarjeta
+),
+transacciones_con_id AS (
+    SELECT row_number() over () + (SELECT MAX(id) FROM bansur) as id, *
+    FROM transacciones
+)
+UPDATE CLAP AS c
+SET id = t.id
+FROM transacciones_con_id AS t
+WHERE c.id IS NULL
+    AND concat(c.inicio06_tarjeta, c.final4_tarjeta) = t.tarjeta
+    AND c.codigo_autorizacion = t.codigo_autorizacion
+    AND abs(c.monto) = t.monto_abs
+    AND c.id_banco = t.id_banco;
