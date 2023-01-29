@@ -117,3 +117,8 @@ WHERE id is null
         AND codigo_autorizacion IS NOT NULL
         AND abs(monto) IS NOT NULL
         AND id_banco IS NOT NULL;
+/**
+  Despues de ejecutar la consulta anterior, el resultado nos dice que hay transacciones (54491) por asignar un id
+  ya que no cruzaron con las de banzur pero se puede identificar usando el criterio de unicidad antes mencionado, es
+  decir, las columnas tarjeta, codigo de autorizacion, monto y banco, para asignar estos ids usamos la siguiente consulta
+ */
