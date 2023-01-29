@@ -109,3 +109,11 @@ WHERE concat(c.inicio06_tarjeta, c.final4_tarjeta) = b.tarjeta
 /**
   Con la siguiente consulta podemos verificar si existen transacciones que les falte asignarle el id
  */
+ SELECT COUNT(*)
+FROM clap
+WHERE id is null
+        AND inicio06_tarjeta IS NOT NULL
+        AND final4_tarjeta IS NOT NULL
+        AND codigo_autorizacion IS NOT NULL
+        AND abs(monto) IS NOT NULL
+        AND id_banco IS NOT NULL;
