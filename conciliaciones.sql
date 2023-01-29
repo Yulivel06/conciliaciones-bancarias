@@ -105,3 +105,7 @@ WHERE concat(c.inicio06_tarjeta, c.final4_tarjeta) = b.tarjeta
     AND abs(c.monto) = abs(b.monto)
     AND c.id_banco = b.id_adquiriente
 ;
+
+/**
+  Con la siguiente consulta podemos verificar si existen transacciones que les falte asignarle el id
+ */
