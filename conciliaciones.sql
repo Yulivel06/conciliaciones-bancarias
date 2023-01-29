@@ -142,3 +142,25 @@ WHERE c.id IS NULL
     AND c.id_banco = t.id_banco;
 
 -- Creamos una vista para calcular la data conciliable con los criterios descritos por Simetrik
+
+CREATE OR REPLACE VIEW clap_conciliable AS (
+     SELECT id,
+            concat(inicio06_tarjeta,final4_tarjeta) AS tarjeta,
+            tipo_trx,
+            monto,
+            fecha_transaccion::date AS fecha_transaccion,
+            codigo_autorizacion,
+            id_banco AS id_adquiriente,
+            fecha_recepcion_banco AS fecha_recepcion
+     FROM (
+        SELECT *,
+        row_number() OVER (PARTITION BY id ORDER BY fecha_transaccion DESC) AS rn
+        FROM clap
+        WHERE inicio06_tarjeta IS NOT NULL
+            AND final4_tarjeta IS NOT NULL
+            AND codigo_autorizacion IS NOT NULL
+            AND monto IS NOT NULL
+            AND id_banco IS NOT NULL
+    ) AS r
+     WHERE rn = 1 AND tipo_trx = 'PAGADA'
+);
