@@ -211,3 +211,5 @@ FROM clap_bansur_conciliacion;
 SELECT count(*) AS numero_transacciones_conciliadas
 FROM clap_bansur_conciliacion
 ;
+
+-- El número de transacciones conciliadas es de 96352
