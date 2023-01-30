@@ -23,6 +23,7 @@ CREATE TABLE BANSUR (
     fecha_recepcion DATE
 );
 
+
 /**
  Tiendo encuenta lo descrito por el enunciado:
   "Una transacción regular se evidencia en la base de datos como un PAGO; se debe tener
@@ -89,6 +90,7 @@ WHERE b.tarjeta = t.tarjeta
      WHERE rn = 1 AND tipo_trx = 'PAGO'
 );
 
+
 /**
   Partidas conciliables del cliente CLAP.
   Para esto debemos asignarle un identificador que coincida con los datos en BANSUR
@@ -109,7 +111,7 @@ WHERE concat(c.inicio06_tarjeta, c.final4_tarjeta) = b.tarjeta
 /**
   Con la siguiente consulta podemos verificar si existen transacciones que les falte asignarle el id
  */
- SELECT COUNT(*)
+ SELECT COUNT(*) AS transacciones_sin_id_clap
 FROM clap
 WHERE id is null
         AND inicio06_tarjeta IS NOT NULL
@@ -200,7 +202,7 @@ WITH total_transacciones_conciliables AS (
 )
 SELECT
     round(
-        100.0*(count(*))/(SELECT count(distinct id) FROM total_transacciones_conciliables),
+        100.0*(count(*))/(SELECT count(id) FROM total_transacciones_conciliables),
         2
     ) AS porcentaje_cruce_conciliaciones
 FROM clap_bansur_conciliacion;
