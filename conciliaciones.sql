@@ -228,6 +228,6 @@ FROM clap_bansur_conciliacion
 SELECT SUM(monto_bansur)
 FROM clap_bansur_conciliacion;
 
---3. Monto conciliado segun CLAO
+--3. Monto conciliado segun CLAP
 SELECT SUM(monto_clap)
 FROM clap_bansur_conciliacion;
