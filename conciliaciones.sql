@@ -215,3 +215,15 @@ FROM clap_bansur_conciliacion
 ;
 
 -- El número de transacciones conciliadas es de 96352
+
+/**
+  Teniendo en cuenta que se establece un margen de tolerancia de diferencia en el monto de
+  +- 0.99 esto indica que la sumatoria de los montos puede variar dependiendo de cuales sean
+  los valores elegidos para ser sumandos, por ejemplo, a continuación calulamos el monto total
+  usando el monto de bansur y clap individualmente, despues de ejecurlo notamos que los
+  valores son iguales, por lo que los montos cruzaron exactamente igual.
+ */
+-- 3. Monto conciliado segun bansur
+
+SELECT SUM(monto_bansur)
+FROM clap_bansur_conciliacion;
