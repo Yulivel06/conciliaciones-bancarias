@@ -189,3 +189,18 @@ CREATE OR REPLACE VIEW clap_bansur_conciliacion AS (
             AND (b.monto-c.monto) BETWEEN -0.99 AND 0.99
             AND c.fecha_transaccion = b.fecha_transaccion
 );
+
+-- 1. Porcentaje de cruce (conciliación) alcanzado
+
+WITH total_transacciones_conciliables AS (
+    SELECT id FROM bansur_conciliable
+    UNION
+    SELECT id FROM clap_conciliable
+    ORDER BY id
+)
+SELECT
+    round(
+        100.0*(count(*))/(SELECT count(distinct id) FROM total_transacciones_conciliables),
+        2
+    ) AS porcentaje_cruce_conciliaciones
+FROM clap_bansur_conciliacion;
