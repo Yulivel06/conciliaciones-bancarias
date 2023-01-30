@@ -164,3 +164,8 @@ CREATE OR REPLACE VIEW clap_conciliable AS (
     ) AS r
      WHERE rn = 1 AND tipo_trx = 'PAGADA'
 );
+
+/**
+  Ahora que ya tenemos las partidas conciliables de cada base de datos,
+  realizamos el cruce entre las dos entidades para realizar la conciliación.
+*/
