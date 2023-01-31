@@ -147,6 +147,7 @@ WHERE c.id IS NULL
 
 CREATE OR REPLACE VIEW clap_conciliable AS (
      SELECT id,
+
             concat(inicio06_tarjeta,final4_tarjeta) AS tarjeta,
             tipo_trx,
             monto,
@@ -231,3 +232,6 @@ FROM clap_bansur_conciliacion;
 --3. Monto conciliado segun CLAP
 SELECT SUM(monto_clap)
 FROM clap_bansur_conciliacion;
+
+-- diferencia entre montos conciliables bansur y clap
+
