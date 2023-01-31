@@ -235,3 +235,9 @@ FROM clap_bansur_conciliacion;
 
 -- diferencia entre montos conciliables bansur y clap
 
+SELECT SUM(monto) - (
+    SELECT SUM(MONTO)
+    FROM bansur_conciliable
+) AS diferencia_montos_conciliables
+FROM clap_conciliable;
+
