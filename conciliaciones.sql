@@ -43,7 +43,7 @@ SELECT row_number() over (), *
 FROM transacciones
 ;
 
-- Agregamos una columna para asignar el identificador de la transacción (id)
+-- Agregamos una columna para asignar el identificador de la transacción (id)
 ALTER TABLE bansur
 ADD COLUMN id numeric;
 
@@ -240,4 +240,27 @@ SELECT SUM(monto) - (
     FROM bansur_conciliable
 ) AS diferencia_montos_conciliables
 FROM clap_conciliable;
+
+
+-- diferencia de monto en conciliacion_clap
+
+SELECT sum(monto) - (
+    SELECT sum(monto_clap) AS monto_conciliado_clap
+    FROM clap_bansur_conciliacion
+)  AS monto_no_conciliado_clap
+FROM clap_conciliable;
+
+-- transacciones no conciliadas de clap
+
+WITH transaccion_no_concialiables_clap AS (
+      SELECT id,
+            tarjeta, monto, fecha_transaccion
+        FROM clap_conciliable
+        EXCEPT
+        SELECT id,
+            tarjeta, monto_clap, fecha_transaccion
+        FROM clap_bansur_conciliacion
+        )
+SELECT  * FROM transaccion_no_concialiables_clap;
+
 
