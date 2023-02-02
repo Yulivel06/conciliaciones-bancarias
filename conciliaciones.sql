@@ -262,3 +262,17 @@ SELECT  * FROM transaccion_no_concialiables_clap;
 
 -- transacciones no conciliadas basnur
 
+with transaccion_no_concialiadas_bansur as (
+        SELECT
+        id,
+        tarjeta, monto, fecha_transaccion
+        FROM bansur_conciliable
+        EXCEPT
+        SELECT id,
+        tarjeta, monto_bansur, fecha_transaccion
+        FROM clap_bansur_conciliacion
+)
+SELECT  *
+FROM transaccion_no_concialiadas_bansur
+;
+
