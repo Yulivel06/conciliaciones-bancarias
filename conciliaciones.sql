@@ -260,4 +260,5 @@ WITH transaccion_no_concialiables_clap AS (
         )
 SELECT  * FROM transaccion_no_concialiables_clap;
 
+-- transacciones no conciliadas basnur
 
