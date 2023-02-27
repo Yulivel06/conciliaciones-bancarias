@@ -7,3 +7,5 @@ Se trata de un proceso que permite comparar los valores que la empresa tiene reg
 Es decir, compara información entres dos fuentes de datos en busca de información equivalente.
 
 ## Estudio de caso 
+
+Uno de nuestros clientes, CLAP, maneja Datafonos y se encarga de procesar pagos. SIMETRIK es su aliado para comparar las transacciones que se reportan a través de sus dispositivos contra las transacciones que se registran en las liquidaciones bancarias (BANSUR).
