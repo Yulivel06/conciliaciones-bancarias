@@ -25,3 +25,11 @@ Que el valor pagado en la transacción sea igual o que su diferencia esté en el
 Que tengan la misma fecha de transacción.
 
 ## Solucion
+
+Tiendo encuenta lo descrito por el enunciado:
+  "Una transacción regular se evidencia en la base de datos como un PAGO; se debe tener
+   en cuenta que un mismo ID puede también tomar estado de Cancelación, Chargeback u Otros casos."
+ Para esto creamos un id que nos permita identificar cada transacción en cada base da
+ datos (CLAP Y BANSUR) ya que en los datasets no viene dicho id, para lograrlo podemos usar el
+ número de la tarjeta, el código de autorización, el monto y el id del adquiriente como criterios
+ de unicidad, esto permitirá identificar cada transacción agrupando por estos campos.
