@@ -24,4 +24,4 @@ Que tengan los mismos 4 últimos dígitos de la tarjeta.
 Que el valor pagado en la transacción sea igual o que su diferencia esté en el rango de más o menos 0.99 pesos.
 Que tengan la misma fecha de transacción.
 
-
+## Solucion
