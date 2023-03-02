@@ -39,6 +39,7 @@ Tiendo encuenta lo descrito por el enunciado:
  número de la tarjeta, el código de autorización, el monto y el id del adquiriente como criterios
  de unicidad, esto permitirá identificar cada transacción agrupando por estos campos.
 
+``` sql
 WITH transacciones AS (
     SELECT tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_adquiriente
     FROM bansur
@@ -48,3 +49,4 @@ WITH transacciones AS (
 SELECT row_number() over (), *
 FROM transacciones
 ;
+``` 
