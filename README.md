@@ -26,7 +26,7 @@ Que tengan la misma fecha de transacción.
 
 ## Empecemos..
 
-1. Puede obtener los dataset: Aquí 
+1. Puede obtener los dataset de  [BANSUR](https://github.com/Yulivel06/conciliaciones-bancarias/blob/master/BANSUR.csv) y 
 
 2. Procedemos a crear cada una de las tablas 
 
