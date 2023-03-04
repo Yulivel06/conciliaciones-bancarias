@@ -43,6 +43,19 @@ CREATE TABLE CLAP (
     fecha_recepcion_banco DATE
 );
 ``` 
+``` sql
+-- Crear tabla Bansur
+
+CREATE TABLE BANSUR (
+    tarjeta VARCHAR,
+    tipo_trx VARCHAR,
+    monto DECIMAL,
+    fecha_transaccion VARCHAR,
+    codigo_autorizacion VARCHAR,
+    id_adquiriente VARCHAR,
+    fecha_recepcion DATE
+);
+``` 
 
 ## Es momento de analizar nuestro estudio de caso
 
