@@ -44,7 +44,8 @@ CREATE TABLE CLAP (
 );
 ``` 
 ``` sql
--- Crear tabla Bansur
+
+Crear tabla Bansur
 
 CREATE TABLE BANSUR (
     tarjeta VARCHAR,
