@@ -57,8 +57,10 @@ CREATE TABLE BANSUR (
     fecha_recepcion DATE
 );
 ``` 
+2. cargamos cada archico a su tabla correspondiente. 
 
-## Es momento de analizar nuestro estudio de caso
+
+## Ahora sí, es momento de analizar nuestro estudio de caso
 
 Así que...
 
