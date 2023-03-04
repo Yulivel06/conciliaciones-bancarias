@@ -24,6 +24,13 @@ Que tengan los mismos 4 últimos dígitos de la tarjeta.
 Que el valor pagado en la transacción sea igual o que su diferencia esté en el rango de más o menos 0.99 pesos.
 Que tengan la misma fecha de transacción.
 
+## Empecemos..
+
+1. Puede obtener los dataset: Aquí 
+
+2. Procedemos a crear cada una de las tablas 
+
+
 ## Es momento de analizar nuestro estudio de caso
 
 Así que...
