@@ -30,6 +30,19 @@ Que tengan la misma fecha de transacción.
 
 2. Procedemos a crear cada una de las tablas 
 
+Crear tabla CLAP
+``` sql
+CREATE TABLE CLAP (
+    inicio06_tarjeta VARCHAR,
+    final4_tarjeta VARCHAR,
+    tipo_trx VARCHAR,
+    monto DECIMAL,
+    fecha_transaccion TIMESTAMP,
+    codigo_autorizacion VARCHAR,
+    id_banco VARCHAR,
+    fecha_recepcion_banco DATE
+);
+``` 
 
 ## Es momento de analizar nuestro estudio de caso
 
