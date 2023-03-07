@@ -92,7 +92,7 @@ ALTER TABLE bansur
 ADD COLUMN id numeric;
 ```
 -- Seguidamente, establecemos el valor de los ids usando el criterio de unicidad antes expuesto
-
+``` sql
 WITH transacciones AS (
     SELECT tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_adquiriente
     FROM bansur
@@ -111,3 +111,4 @@ WHERE b.tarjeta = t.tarjeta
     AND b.codigo_autorizacion = t.codigo_autorizacion
     AND abs(b.monto) = t.monto_abs
     AND b.id_adquiriente = t.id_adquiriente;
+ ```
