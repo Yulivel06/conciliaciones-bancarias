@@ -112,3 +112,6 @@ WHERE b.tarjeta = t.tarjeta
     AND abs(b.monto) = t.monto_abs
     AND b.id_adquiriente = t.id_adquiriente;
  ```
+
+Ahora bien, Simetrik considera una partida como conciliable toda aquella transacción cuyo último estado en la base de datos ordenada por fecha y hora  sea PAGADA.
+De esta manera, procedemos a identificar la fecha mas reciente de una transaccion y su estado como pagada
