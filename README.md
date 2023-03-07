@@ -92,3 +92,10 @@ ALTER TABLE bansur
 ADD COLUMN id numeric;
 
 -- Seguidamente, establecemos el valor de los ids usando el criterio de unicidad antes expuesto
+
+WITH transacciones AS (
+    SELECT tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_adquiriente
+    FROM bansur
+    GROUP BY tarjeta, codigo_autorizacion, abs(monto), id_adquiriente
+    ORDER BY tarjeta
+),
