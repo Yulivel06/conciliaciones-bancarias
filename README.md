@@ -115,3 +115,21 @@ WHERE b.tarjeta = t.tarjeta
 
 Ahora bien, Simetrik considera una partida como conciliable toda aquella transacción cuyo último estado en la base de datos ordenada por fecha y hora  sea PAGADA.
 De esta manera, procedemos a identificar la fecha mas reciente de una transaccion y su estado como pagada
+``` sql
+CREATE OR REPLACE VIEW bansur_conciliable AS (
+     SELECT id,
+            tarjeta,
+            tipo_trx,
+            monto,
+            to_date(fecha_transaccion,'YYYYMMDD') AS fecha_transaccion,
+            codigo_autorizacion,
+            id_adquiriente,
+            fecha_recepcion
+     FROM (
+        SELECT *,
+        row_number() OVER (PARTITION BY id ORDER BY fecha_transaccion DESC) AS rn
+        FROM bansur
+    ) AS r
+     WHERE rn = 1 AND tipo_trx = 'PAGO'
+);
+```
