@@ -87,10 +87,10 @@ FROM transacciones
 ;
 ``` 
 -- Agregamos una columna para asignar el identificador de la transacción (id)
-
+``` sql
 ALTER TABLE bansur
 ADD COLUMN id numeric;
-
+```
 -- Seguidamente, establecemos el valor de los ids usando el criterio de unicidad antes expuesto
 
 WITH transacciones AS (
