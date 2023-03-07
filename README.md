@@ -99,3 +99,15 @@ WITH transacciones AS (
     GROUP BY tarjeta, codigo_autorizacion, abs(monto), id_adquiriente
     ORDER BY tarjeta
 ),
+
+transacciones_con_id AS (
+    SELECT row_number() over () as id, *
+    FROM transacciones
+)
+UPDATE BANSUR AS b
+SET id = t.id
+FROM transacciones_con_id AS t
+WHERE b.tarjeta = t.tarjeta
+    AND b.codigo_autorizacion = t.codigo_autorizacion
+    AND abs(b.monto) = t.monto_abs
+    AND b.id_adquiriente = t.id_adquiriente;
