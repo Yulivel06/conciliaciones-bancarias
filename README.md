@@ -86,3 +86,7 @@ SELECT row_number() over (), *
 FROM transacciones
 ;
 ``` 
+-- Agregamos una columna para asignar el identificador de la transacción (id)
+
+ALTER TABLE bansur
+ADD COLUMN id numeric;
