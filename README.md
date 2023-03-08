@@ -133,3 +133,5 @@ CREATE OR REPLACE VIEW bansur_conciliable AS (
      WHERE rn = 1 AND tipo_trx = 'PAGO'
 );
 ```
+Ahora, obtenemos las Partidas conciliables del cliente CLAP.
+Para esto debemos asignarle un identificador que coincida con los datos en BANSUR
