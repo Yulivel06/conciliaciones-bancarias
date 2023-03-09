@@ -135,3 +135,7 @@ CREATE OR REPLACE VIEW bansur_conciliable AS (
 ```
 Ahora, obtenemos las Partidas conciliables del cliente CLAP.
 Para esto debemos asignarle un identificador que coincida con los datos en BANSUR
+``` sql
+ALTER TABLE clap
+ADD COLUMN id numeric;
+```
