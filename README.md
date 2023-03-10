@@ -139,3 +139,16 @@ Para esto debemos asignarle un identificador que coincida con los datos en BANSU
 ALTER TABLE clap
 ADD COLUMN id numeric;
 ```
+
+  Con la siguiente consulta podemos verificar si existen transacciones que les falte asignarle el id
+
+``` sql
+SELECT COUNT(*)
+FROM clap
+WHERE id is null
+        AND inicio06_tarjeta IS NOT NULL
+        AND final4_tarjeta IS NOT NULL
+        AND codigo_autorizacion IS NOT NULL
+        AND abs(monto) IS NOT NULL
+        AND id_banco IS NOT NULL;
+  ```
