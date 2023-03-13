@@ -155,3 +155,8 @@ WHERE id is null
 - Despues de ejecutar la consulta anterior, el resultado nos dice que hay transacciones (54491) por asignar un id
   ya que no cruzaron con las de banzur pero se puede identificar usando el criterio de unicidad antes mencionado, es
   decir, las columnas tarjeta, codigo de autorizacion, monto y banco, para asignar estos ids usamos la siguiente consulta
+WITH transacciones AS (
+    SELECT concat(inicio06_tarjeta, final4_tarjeta) AS tarjeta, codigo_autorizacion, abs(monto) AS monto_abs, id_banco
+    FROM clap
+    GROUP BY tarjeta, codigo_autorizacion, abs(monto), id_banco
+    ORDER BY tarjeta
