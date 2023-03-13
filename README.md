@@ -175,3 +175,4 @@ WHERE c.id IS NULL
     AND abs(c.monto) = t.monto_abs
     AND c.id_banco = t.id_banco;
      ```
+- Creamos una vista para calcular la data conciliable con los criterios descritos por Simetrik 
