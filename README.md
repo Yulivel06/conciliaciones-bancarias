@@ -176,7 +176,7 @@ WHERE c.id IS NULL
     AND c.id_banco = t.id_banco;
      ```
 - Creamos una vista para calcular la data conciliable con los criterios descritos por Simetrik 
-
+``` sql 
 CREATE OR REPLACE VIEW clap_conciliable AS (
      SELECT id,
             concat(inicio06_tarjeta,final4_tarjeta) AS tarjeta,
@@ -198,3 +198,4 @@ CREATE OR REPLACE VIEW clap_conciliable AS (
     ) AS r
      WHERE rn = 1 AND tipo_trx = 'PAGADA'
 );
+ ```
