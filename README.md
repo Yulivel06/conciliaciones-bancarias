@@ -186,3 +186,15 @@ CREATE OR REPLACE VIEW clap_conciliable AS (
             codigo_autorizacion,
             id_banco AS id_adquiriente,
             fecha_recepcion_banco AS fecha_recepcion
+     FROM (
+        SELECT *,
+        row_number() OVER (PARTITION BY id ORDER BY fecha_transaccion DESC) AS rn
+        FROM clap
+        WHERE inicio06_tarjeta IS NOT NULL
+            AND final4_tarjeta IS NOT NULL
+            AND codigo_autorizacion IS NOT NULL
+            AND monto IS NOT NULL
+            AND id_banco IS NOT NULL
+    ) AS r
+     WHERE rn = 1 AND tipo_trx = 'PAGADA'
+);
