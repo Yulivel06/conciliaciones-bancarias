@@ -224,3 +224,4 @@ CREATE OR REPLACE VIEW clap_bansur_conciliacion AS (
             AND c.fecha_transaccion = b.fecha_transaccion
 );
 ```
+Una vez realziado el cruve, podemos obtener la respuesta a ¿ Cual fue el porcentaje de cruce (conciliación) alcanzado?
