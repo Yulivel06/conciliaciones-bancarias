@@ -202,3 +202,25 @@ CREATE OR REPLACE VIEW clap_conciliable AS (
 
 Ahora que ya tenemos las partidas conciliables de cada base de datos,
 realizamos el cruce entre las dos entidades para realizar la conciliación
+``` sql 
+CREATE OR REPLACE VIEW clap_bansur_conciliacion AS (
+    SELECT c.id,
+           c.tarjeta,
+           c.tipo_trx,
+           c.monto AS monto_clap,
+           b.monto AS monto_bansur,
+           c.fecha_transaccion,
+           c.codigo_autorizacion AS codigo_clap,
+           b.codigo_autorizacion AS codigo_bansur,
+           c.id_adquiriente AS id_banco_clap,
+           b.id_adquiriente AS id_adquiriente_bansur,
+           c.fecha_recepcion AS fecha_recepcion_clap,
+           b.fecha_recepcion AS fecha_recepcion_bansur
+    FROM clap_conciliable AS c
+    INNER JOIN bansur_conciliable b on
+            c.id=b.id
+            AND c.tarjeta = b.tarjeta
+            AND (b.monto-c.monto) BETWEEN -0.99 AND 0.99
+            AND c.fecha_transaccion = b.fecha_transaccion
+);
+```
