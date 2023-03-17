@@ -227,3 +227,6 @@ CREATE OR REPLACE VIEW clap_bansur_conciliacion AS (
 Una vez realziado el cruve, podemos obtener la respuesta a ¿ Cual fue el porcentaje de cruce (conciliación) alcanzado?
 WITH total_transacciones_conciliables AS (
     SELECT id FROM bansur_conciliable
+    UNION
+    SELECT id FROM clap_conciliable
+    ORDER BY id
