@@ -225,8 +225,17 @@ CREATE OR REPLACE VIEW clap_bansur_conciliacion AS (
 );
 ```
 Una vez realziado el cruce, podemos obtener la respuesta a ¿ Cual fue el porcentaje de cruce (conciliación) alcanzado?
+``` sql 
 WITH total_transacciones_conciliables AS (
     SELECT id FROM bansur_conciliable
     UNION
     SELECT id FROM clap_conciliable
     ORDER BY id
+    )
+SELECT
+    round(
+        100.0*(count(*))/(SELECT count(distinct id) FROM total_transacciones_conciliables),
+        2
+    ) AS porcentaje_cruce_conciliaciones
+FROM clap_bansur_conciliacion;
+```
