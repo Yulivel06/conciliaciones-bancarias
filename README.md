@@ -240,3 +240,6 @@ SELECT
 FROM clap_bansur_conciliacion;
 ```
 -- porcentaje no conciliado
+
+
+--El porcentaje de cruce alcanzado es de 52.57%
