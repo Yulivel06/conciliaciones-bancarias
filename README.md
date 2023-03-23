@@ -245,8 +245,11 @@ FROM clap_bansur_conciliacion;
 --El porcentaje de cruce alcanzado es de 52.57%
 
 -- 2. Número de transacciones conciliadas
+
+
 ``` sql
-SELECT count(*) AS numero_transacciones_conciliadas
+SELECT 
+    count(*) AS numero_transacciones_conciliadas
 FROM clap_bansur_conciliacion
 ;
 ```
