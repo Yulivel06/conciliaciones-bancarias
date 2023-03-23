@@ -243,3 +243,5 @@ FROM clap_bansur_conciliacion;
 
 
 --El porcentaje de cruce alcanzado es de 52.57%
+
+-- 2. Número de transacciones conciliadas
